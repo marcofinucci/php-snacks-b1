@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +13,9 @@
 </head>
 
 <body>
+
+
+  <?php include __DIR__ . '/menu.php'; ?>
 
   <?php
 
@@ -30,10 +38,15 @@
   if (!empty($name) && strlen($name) > 3 && !empty($mail) && str_contains($mail, '@') && str_contains($mail, '.') && !empty($age) && is_numeric($age)) {
     $showMessage = true;
     $message = 'Accesso riuscito';
+
+    // Save name to session
+    $_SESSION['name'] = $name;
   } else {
     $showMessage = true;
     $message = 'Accesso negato';
   }
+
+
 
   ?>
 
